@@ -4,6 +4,11 @@ import shutil
 import requests
 from termcolor import colored
 
+def debug_print(msg, debug=False):
+    # Check if debug is enabled
+    if debug:
+        print(msg)
+
 def repo_url_valid(repo_url, max_attempts=3):
     """
     Check if the repository URL exists on GitHub.
@@ -34,7 +39,7 @@ def repo_url_valid(repo_url, max_attempts=3):
             repo_url = input("Enter the repository URL again: ")
     return False
 
-def perform_clean_operation(path):
+def perform_clean_operation(path, debug=False):
     """
     Perform a clean operation on the repository.
     
@@ -49,6 +54,6 @@ def perform_clean_operation(path):
     if os.path.exists(path):
         # Remove the folder
         shutil.rmtree(path)
-        debug_print(f"Removed existing folder: {colored(folder_name, 'red')}")
+        debug_print(f"Removed existing folder: {colored(folder_name, 'red')}", debug)
 
 

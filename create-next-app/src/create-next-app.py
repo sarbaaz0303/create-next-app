@@ -15,8 +15,7 @@ def main(path, repo_url, clean=False, debug=False):
         debug (bool, optional): Whether to enable debugging. Defaults to False.
     """
     # Perform tasks based on the parameters
-    if debug:
-        debug_print(colored("\nDebugging enabled.", "yellow"))
+    debug_print(colored("\nDebugging enabled.", "yellow"), debug)
     
     # Check if the path is provided, if not, ask for user input
     if not path:
@@ -43,12 +42,7 @@ def main(path, repo_url, clean=False, debug=False):
     print(f"\nSelected repository URL: {colored(repo_url, 'green')}")
             
     if clean:
-        perform_clean_operation(path)
-
-def debug_print(msg):
-    # Check if debug is enabled
-    if debug:
-        print(msg)
+        perform_clean_operation(path, debug)
 
 if __name__ == "__main__":
     # Parse command-line arguments
